@@ -1,6 +1,4 @@
-# Project Title
-
-Simple Python Development using Flask and SQLAlchemy
+# Simple Python Development using Flask and SQLAlchemy
 
 Tables – Filtering & Sorting! 
 
