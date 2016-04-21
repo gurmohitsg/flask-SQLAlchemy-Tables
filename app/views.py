@@ -23,7 +23,6 @@ def show_all():
 			users = User.query.order_by(User.status)
 	elif request.args.get('filterById') or request.args.get('filterByName') or request.args.get('filterBySign') or request.args.get('filterByStatus'):
 		global users
-		print("yeee")
 		users = User.query.filter(or_(User.display_name==request.args.get('filterByName'),
 		User.id==request.args.get('filterById'),
 		User.signing_identity==request.args.get('filterBySign'),
@@ -36,7 +35,6 @@ def show_all():
 		for e in emails:
 			email_list.append(e.emails)
 		reachable_at.update({u.id:email_list})
-		print(reachable_at)
 	return render_template('show_all.html', users = users, reachable_at = reachable_at , row=0)
 
 
