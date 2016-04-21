@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+  
+	<style>
+ 	         input {
+ 	         background-color:#FFFF99;
+ 	         }
+ 	         
+ 	      </style>
+
+   </head>
+   <body>
+
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+		
+      <h1>Users (<a href = "{{ url_for('new') }}">Add Users
+         </a>)</h1>
+      <hr/>
+      <table border="1" >
+         <thead>
+            <tr>
+               <th><a href="show?SortBy=id">ID</a></th>
+               <th><a href="show?SortBy=s_id">Siging ID</th>
+               <th><a href="show?SortBy=key">Signing Key</a></th>
+               <th><a href="show?SortBy=name">Display Name</a></th>
+			   <th>Reachable at</th>
+			   <th><a href="show?SortBy=id">status</a></th>
+            </tr>
+         </thead>
+         
+         <tbody>
+		 <form action = "show" method = "GET">
+				<tr>
+					<td><input type = "text" name = "filterById" /></td>
+					<td><input type = "text" name = "filterBySign" /></td>
+					<td></td>
+					<td><input type = "text" name = "filterByName" /></td>
+					<td></td>
+					<td><input type = "text" name = "filterByStatus" /></td>
+			</tr>
+		
+            {% for user in users %}
+               <tr>
+                  <td>{{ user.id }}</td>
+				  <td>{{ user.signing_identity }}</td>
+                  <td>{{ user.signing_key  }}</td>
+                  <td>{{ user.display_name }}</td>
+				 <td>
+						{% for e in reachable_at[user.id] %}
+							{{e}}<br> 
+						{% endfor %}
+				 </td>
+                  <td>{{ user.status }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+	  <br>
+	  <br>
+      <input align="center" type = "submit" value = "ApplyFilter"/>
+	  <h4>Note: Filter is Case Sensative</h3>
+	  </form>
+   </body>
+</html>

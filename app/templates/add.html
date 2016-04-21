@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+   <body>
+   
+      <h1>Add Users</h1>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      
+      <form action = "{{ request.path }}" method = "post">
+         <label for = "name">Display Name</label><br>
+         <input type = "text" name = "name"/><br>
+		 <label for = "email">Siging ID </label><br>
+         <input type = "text" name = "sign_id"/><br>
+		<label for = "email">Email 1</label><br>
+         <input type = "text" name = "emails[]"/><br>
+		 <label for = "email">Email 2</label><br>
+         <input type = "text" name = "emails[]"/><br>
+		 <label for = "email">Email 3</label><br>
+         <input type = "text" name = "emails[]" /><br>
+         <input type = "submit" value = "Submit" />
+      </form>
+	  <br>
+	  <h4>Note: No email validation has been performed. Assumption: Email is correctly entered by the user.</h4>
+      
+   </body>
+</html>
