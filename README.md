@@ -6,8 +6,7 @@ Tables – Filtering & Sorting!
 
 ### Prerequisities
 
-> Python 3+
-> Flask + SQLAlchemy.
+Python 3+, Flask + SQLAlchemy.
 
 ### Installing
 
